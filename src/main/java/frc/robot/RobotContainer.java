@@ -32,8 +32,8 @@ public class RobotContainer {
 
   // Nhớ sủa hết speed mấy cái này!!!!
   private final Drive drive = new Drive(drivebase, 0, 0);
-  private final Elevate elevateUp = new Elevate(elevator, 0, 0);
-  private final Elevate elevateDown = new Elevate(elevator, 0, 0);
+  private final Elevate elevateUp = new Elevate(elevator, 0.8, 0.8);
+  private final Elevate elevateDown = new Elevate(elevator, -0.8, -0.8);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -48,8 +48,8 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(taycam, JOYSTICK.Button_A).whenActive(elevateUp);
-    new JoystickButton(taycam, 0).whenActive(elevateDown);
+    new JoystickButton(taycam, JOYSTICK.Button_Y).whileActiveOnce(elevateUp);
+    new JoystickButton(taycam, JOYSTICK.Button_A).whileActiveOnce(elevateDown);
   }
 
   /**
